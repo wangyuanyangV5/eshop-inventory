@@ -26,8 +26,16 @@ public class ProductInventoryDBUpdateRequest implements  Request{
 
     @Override
     public void process() {
+        System.out.println("数据库更新请求开始执行，商品id："+ productInventory.getProductId());
         //删除缓存
        productInventoryServer.removeProductInventoryCache(productInventory);
+       System.out.println("已删除redis缓存，productId："+ productInventory.getProductId());
+       //todo:为了演示先删除缓存然后还没有更新数据库的时候读请求过来了，这里可以人工sleep一下
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         //更新库存
         productInventoryServer.updateProductInventory(productInventory);
     }
@@ -35,5 +43,10 @@ public class ProductInventoryDBUpdateRequest implements  Request{
     @Override
     public Integer getProductId() {
         return productInventory.getProductId();
+    }
+
+    @Override
+    public boolean isForceRefresh() {
+        return false;
     }
 }

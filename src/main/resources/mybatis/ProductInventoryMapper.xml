@@ -3,7 +3,7 @@
 <mapper namespace="com.roncoo.eshop.inventory.mapper.ProductInventoryMapper">
 
     <update id="updateProductInventory" parameterType="com.roncoo.eshop.inventory.model.ProductInventory">
-        update product_inventory set inventory_cnt = #{productInventory} where product_id = #{productId}
+        update product_inventory set inventory_cnt = #{inventoryCnt} where product_id = #{productId}
     </update>
 
     <select id="findProductInventory" resultType="com.roncoo.eshop.inventory.model.ProductInventory">
