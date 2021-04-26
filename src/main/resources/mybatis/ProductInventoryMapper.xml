@@ -6,4 +6,8 @@
         update product_inventory set inventory_cnt = #{productInventory} where product_id = #{productId}
     </update>
 
+    <select id="findProductInventory" resultType="com.roncoo.eshop.inventory.model.ProductInventory">
+        select product_id as productId,inventory_cnt as inventoryCnt from product_inventory where product_id = #{productId}
+    </select>
+
 </mapper>

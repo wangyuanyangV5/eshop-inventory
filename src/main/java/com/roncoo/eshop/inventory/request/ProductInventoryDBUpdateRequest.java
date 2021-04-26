@@ -31,4 +31,9 @@ public class ProductInventoryDBUpdateRequest implements  Request{
         //更新库存
         productInventoryServer.updateProductInventory(productInventory);
     }
+
+    @Override
+    public Integer getProductId() {
+        return productInventory.getProductId();
+    }
 }
